@@ -12,6 +12,14 @@ async function submitForm(event) {
   }
 
   try {
+    // Improve UX: disable submit button while sending
+    const btn = form.querySelector('button[type="submit"]');
+    if (btn) {
+      btn.disabled = true;
+      btn.dataset.originalText = btn.textContent;
+      btn.textContent = 'Sending...';
+    }
+
     const res = await fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -19,8 +27,18 @@ async function submitForm(event) {
     });
 
     if (!res.ok) {
-      const err = await res.json().catch(() => ({}));
-      throw new Error(err.error || 'Failed to send message');
+      // Try to read JSON error; fall back to text
+      let serverMsg = 'Failed to send message';
+      try {
+        const err = await res.json();
+        serverMsg = err?.error || err?.message || serverMsg;
+      } catch (_) {
+        try {
+          const txt = await res.text();
+          if (txt) serverMsg = txt;
+        } catch (_) {}
+      }
+      throw new Error(serverMsg);
     }
 
     alert('Message sent! I\'ll get back to you soon.');
@@ -29,8 +47,15 @@ async function submitForm(event) {
     const ta = form.querySelector('textarea');
     if (ta) { ta.style.height = 'auto'; }
   } catch (e) {
-    alert('Sorry, there was a problem sending your message. Please try again later.');
-    console.error(e);
+    const msg = e && e.message ? e.message : 'Sorry, there was a problem sending your message. Please try again later.';
+    alert(msg);
+    console.error('Contact form error:', e);
+  } finally {
+    const btn = form.querySelector('button[type="submit"]');
+    if (btn) {
+      btn.disabled = false;
+      if (btn.dataset.originalText) btn.textContent = btn.dataset.originalText;
+    }
   }
 }
 

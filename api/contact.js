@@ -8,7 +8,23 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const { name, email, message } = req.body || {};
+    // Ensure we have a parsed JSON body
+    const contentType = req.headers['content-type'] || '';
+    let body = req.body;
+    if (!body && contentType.includes('application/json')) {
+      body = await new Promise((resolve, reject) => {
+        let data = '';
+        req.on('data', (chunk) => { data += chunk; });
+        req.on('end', () => resolve(data));
+        req.on('error', reject);
+      });
+    }
+
+    if (typeof body === 'string') {
+      try { body = JSON.parse(body); } catch (_) { body = {}; }
+    }
+
+    const { name, email, message } = body || {};
 
     if (!name || !email || !message) {
       res.status(400).json({ error: 'Missing required fields' });
@@ -48,8 +64,16 @@ module.exports = async (req, res) => {
     });
 
     if (!resp.ok) {
-      const errTxt = await resp.text().catch(() => '');
-      res.status(502).json({ error: 'Email service error', details: errTxt });
+      let errMsg = 'Email service error';
+      try {
+        const data = await resp.json();
+        // Resend typically returns { error: { message: '...', name: '...', statusCode: ... } }
+        errMsg = data?.error?.message || data?.message || errMsg;
+      } catch (_) {
+        const errTxt = await resp.text().catch(() => '');
+        if (errTxt) errMsg = errTxt;
+      }
+      res.status(502).json({ error: errMsg, status: resp.status });
       return;
     }
 
