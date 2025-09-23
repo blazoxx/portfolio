@@ -30,7 +30,6 @@
   ],
   "rewrites": [
     { "source": "/", "destination": "/index.html" },
-    { "source": "/contact", "destination": "/components/ContactMe/ContactMe.html" },
-    { "source": "/coming-soon", "destination": "/components/ComingSoon/ComingSoon.html" }
+    { "source": "/contact", "destination": "/components/ContactMe/ContactMe.html" }
   ]
 }
