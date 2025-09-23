@@ -2,6 +2,12 @@
   "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
+  "builds": [
+    { "src": "index.html", "use": "@vercel/static" },
+    { "src": "style.css", "use": "@vercel/static" },
+    { "src": "public/**", "use": "@vercel/static" },
+    { "src": "components/**", "use": "@vercel/static" }
+  ],
   "headers": [
     {
       "source": "/public/(.*)\\.(svg|png|jpg|jpeg|gif|webp|ico)",
