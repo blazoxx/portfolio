@@ -28,8 +28,7 @@
         { "key": "Cache-Control", "value": "public, max-age=60" }
       ]
     }
-  ]
-  ,
+  ],
   "routes": [
     { "src": "/contact", "dest": "/components/ContactMe/ContactMe.html" },
     { "src": "/api/(.*)", "dest": "/api/$1" }
