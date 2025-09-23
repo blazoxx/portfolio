@@ -2,30 +2,16 @@
   "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
-  "builds": [
-    { "src": "index.html", "use": "@vercel/static" },
-    { "src": "style.css", "use": "@vercel/static" },
-    { "src": "public/**", "use": "@vercel/static" },
-    { "src": "components/**", "use": "@vercel/static" },
-    { "src": "api/**/*.js", "use": "@vercel/node" }
-  ],
+  "functions": {
+    "api/contact.js": {
+      "runtime": "@vercel/node@2"
+    }
+  },
   "headers": [
     {
-      "source": "/public/(.*)\\.(svg|png|jpg|jpeg|gif|webp|ico)",
+      "source": "/public/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    },
-    {
-      "source": "/public/assets/resume/(.*)\\.(pdf)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
-      ]
-    },
-    {
-      "source": "/components/(.*)\\.(js)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=60" }
+        { "key": "Cache-Control", "value": "public, max-age=31536000" }
       ]
     }
   ],
