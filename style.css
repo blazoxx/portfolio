@@ -499,12 +499,24 @@ body {
     flex: none;
     width: 400px;
     max-width: 80vw;
+    /* Maintain a consistent media frame */
+    aspect-ratio: 16 / 9;
     height: auto;
-    min-height: 250px;
-    background: center url("public/images/back.jpg");
-    background-size: cover;
+    min-height: 250px; /* acts as a floor on very narrow screens */
+    position: relative;
+    overflow: hidden;
+    background: #0f0f10 center / cover no-repeat url("public/images/back.jpg");
     border-radius: 5px;
     border: 2px solid rgba(200, 200, 200, 0.3);
+}
+
+/* Ensure inline images fill the frame without distortion */
+#Projects .layout2 .proj .in-proj img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: inherit;
 }
 
 #Projects .layout2 a:hover .proj .in-proj {
