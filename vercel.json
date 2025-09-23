@@ -21,6 +21,16 @@
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=3600" }
       ]
+    },
+    {
+      "source": "/components/(.*)\\.(js)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=60" }
+      ]
     }
+  ]
+  ,
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/$1" }
   ]
 }
