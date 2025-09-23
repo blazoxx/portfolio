@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "cleanUrls": true,
   "trailingSlash": false,
   "builds": [
     { "src": "index.html", "use": "@vercel/static" },
@@ -30,6 +29,7 @@
     }
   ],
   "rewrites": [
+    { "source": "/", "destination": "/index.html" },
     { "source": "/contact", "destination": "/components/ContactMe/ContactMe.html" }
   ]
 }
