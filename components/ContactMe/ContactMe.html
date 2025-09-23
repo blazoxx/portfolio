@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Me</title>
+    <link rel="stylesheet" href="ContactMe.css" />
+  </head>
+
+  <body>
+    <!-- <section class="contact-header">
+      <div class="heading1">Contact Me</div>
+      <div class="contact-info">
+        <div class="email-circle">
+          <div class="arrow-down">&#8595;</div>
+          <span><br />Send an<br />Email</span>
+        </div>
+        <div class="contact-details">
+          <p>
+            <span>&#9742;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(91)
+            22-143-09
+          </p>
+            <p><img src="FA Icons/most/enveloper.svg" alt="">hello@theBCorp</p>
+        </div>
+      </div>
+    </section> -->
+
+    <section class="message-form">
+      <div class="heading2">Message Me</div>
+      <p>
+        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.<br />
+        Donec velit neque, auctor sit amet aliquam vel.
+      </p>
+      <form onsubmit="submitForm(event)">
+        <input type="text" placeholder="Name" required />
+        <input type="email" placeholder="Email Address" required />
+        <textarea
+          placeholder="Message"
+          oninput="autoGrow(this)"
+          required
+        ></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+
+    <div class="map-section">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3376.9307756754205!2d77.22998241489566!3d28.61393538204884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1d0000000001%3A0x69896c0000000000!2sDelhi!5e0!3m2!1sen!2sin!4v1684727199495!5m2!1sen!2sin"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+
+    <!-- --------------------------------------------------------------------- -->
+
+    <footer class="footer">
+      <div class="footer-first">
+        <div class="footer-section">
+          <a href="BlogPage/index.html">
+            <h4>Blog</h4>
+          </a>
+        </div>
+        <div class="footer-section">
+          <a href="">
+            <h4>B-Xtras</h4>
+          </a>
+        </div>
+        <div class="footer-section">
+          <a href="">
+            <h4>FAQs</h4>
+          </a>
+        </div>
+        <div class="footer-section f1">
+          <a href="">
+            <h4></h4>
+          </a>
+        </div>
+        <div class="footer-section f1">
+          <a href="">
+            <h4></h4>
+          </a>
+        </div>
+        <div class="footer-section">
+          <a href="../index.html">
+            <h4>Portfolio</h4>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <h3>Baibhav Pratap Singh</h3>
+        <div class="footer-social">
+          <ol>
+            <li>
+              <a href="https://github.com/blazoxx">
+                <img src="FA Icons/most/github.svg" alt="" />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/baibhav-pratap-singh-706031284/"
+              >
+                <img src="FA Icons/most/linkedin-s.svg" alt="" />
+              </a>
+            </li>
+            <li>
+              <a href="https://x.com/theB_020">
+                <img src="FA Icons/most/x.svg" alt="" />
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/blazox_x/">
+                <img src="FA Icons/most/instagram.svg" alt="" />
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="FA Icons/most/heart.svg" alt="" />
+              </a>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="foot">
+        <p>
+          &copy;Baibhav Corporation Pvt Ltd
+          <br />
+          Made with
+          <img src="FA Icons/most/heart.svg" class="fa-fart" width="14px" />
+          and
+          <img
+            src="FA Icons/laptop-c.svg"
+            alt=""
+            class="fa-lapi"
+            width="16px"
+          />
+        </p>
+      </div>
+    </footer>
+
+    <script src="ContactMe.js"></script>
+  </body>
+</html>
