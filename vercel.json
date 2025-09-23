@@ -31,6 +31,7 @@
   ]
   ,
   "routes": [
+    { "src": "/contact", "dest": "/components/ContactMe/ContactMe.html" },
     { "src": "/api/(.*)", "dest": "/api/$1" }
   ]
 }
