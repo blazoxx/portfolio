@@ -189,10 +189,6 @@ body {
 
 /* NAVBAR */
 
-/* .nav {
-    margin: 20px;
-} */
-
 .navmid {
     color: var(--colorheading);
     position: relative;
@@ -322,7 +318,6 @@ body {
     transform: translateY(-1px);
 }
 
-/* When swapping to colored variant, remove grayscale filter */
 .tech-stacks .stacks ol li img.colored {
     filter: none;
 }
@@ -375,12 +370,12 @@ body {
     height: 100vh;
     overflow: auto;
     overflow-x: hidden;
-    -webkit-overflow-scrolling: touch; /* iOS momentum scrolling */
+    -webkit-overflow-scrolling: touch;
 }
 
 .no-scrollbar {
     overflow: auto;
-    -webkit-overflow-scrolling: touch; /* iOS momentum scrolling */
+    -webkit-overflow-scrolling: touch;
 }
 
 ::-webkit-scrollbar {
@@ -405,7 +400,6 @@ body {
     pointer-events: none;
     z-index: 0;
     opacity: 1 !important;
-    /* transition: opacity 0.3s ease; */
 }
 
 .watermark-overlay img {
@@ -494,10 +488,9 @@ body {
     flex: none;
     width: 400px;
     max-width: 80vw;
-    /* Maintain a consistent media frame */
     aspect-ratio: 16 / 9;
     height: auto;
-    min-height: 250px; /* acts as a floor on very narrow screens */
+    min-height: 250px;
     position: relative;
     overflow: hidden;
     background: #0f0f10 center / cover no-repeat url("public/images/back.jpg");
@@ -505,7 +498,6 @@ body {
     border: 2px solid rgba(200, 200, 200, 0.3);
 }
 
-/* Ensure inline images fill the frame without distortion */
 #Projects .layout2 .proj .in-proj img {
     width: 100%;
     height: 100%;
@@ -687,7 +679,6 @@ a:hover .in-proj-tx .t-stakes ol li img {
 .fa-lapi:hover {
     filter: invert(60%) sepia(20%) saturate(1000%) hue-rotate(180deg) brightness(100%) contrast(100%);
 }
-
 
 
 /* //////////////////////////////////////////////////////////// */

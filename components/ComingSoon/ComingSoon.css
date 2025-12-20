@@ -6,36 +6,196 @@
   --accent: #f1d36b;
   --card: #17181a;
 }
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif; }
 
-.hero { position: relative; height: 60vh; min-height: 420px; display: grid; place-items: center; background: url('/public/images/1810.png') center/cover no-repeat; }
-.overlay { position: absolute; inset: 0; background: rgba(0,0,0,.55); }
-.hero-content { position: relative; text-align: center; padding: 0 16px; }
-.badge { display: inline-block; text-transform: uppercase; letter-spacing: .15em; font-size: 12px; color: var(--muted); border: 1px solid #444; padding: 6px 10px; border-radius: 999px; }
-.hero h1 { font-size: clamp(42px, 8vw, 82px); margin: 18px 0 6px; font-weight: 800; }
-.hero p { color: #c9c9c9; margin: 0 auto 18px; max-width: 640px; }
-.btn { display: inline-block; border: 1px solid #666; color: #fff; text-decoration: none; padding: 10px 18px; border-radius: 6px; transition: .2s ease; }
-.btn:hover { background: #222; border-color: #888; }
+* {
+  box-sizing: border-box;
+}
 
-.features { background: #fff; color: #111; }
-.grid { max-width: 1050px; margin: 0 auto; padding: 40px 16px; display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-.card { background: #fafafa; border: 1px solid #eee; border-radius: 10px; padding: 24px; text-align: center; }
-.card .icon { font-size: 28px; margin-bottom: 10px; }
-.card h3 { margin: 6px 0 8px; font-size: 16px; letter-spacing: .02em; }
-.card p { margin: 0; color: #555; font-size: 14px; }
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+}
 
-.notify { text-align: center; padding: 40px 16px 56px; }
-.notify h2 { font-size: clamp(22px, 4vw, 32px); margin: 6px 0 8px; }
-.notify p { color: #555; margin: 0 0 18px; }
-.notify-form { display: inline-flex; gap: 10px; align-items: center; border: 1px solid #ddd; border-radius: 999px; padding: 6px; background: #fff; }
-.notify-form input { border: none; outline: none; padding: 10px 14px; min-width: 240px; border-radius: 999px; }
-.notify-form button { border: none; background: #111; color: #fff; padding: 10px 16px; border-radius: 999px; cursor: pointer; }
+.hero {
+  position: relative;
+  height: 60vh;
+  min-height: 420px;
+  display: grid;
+  place-items: center;
+  background: url('/public/images/1810.png') center/cover no-repeat;
+}
 
-.footer { text-align: center; padding: 32px 16px 50px; color: var(--muted); background: var(--bg); }
-.footer .logo { font-size: 20px; color: #fff; margin-bottom: 10px; }
-.footer .social { display: flex; gap: 14px; justify-content: center; margin: 8px 0; }
-.footer .social a { color: #bfbfbf; text-decoration: none; }
-.footer .social a:hover { color: #fff; }
-.footer .email { display: inline-block; color: #bfbfbf; margin: 6px 0 10px; text-decoration: none; }
-.footer .email:hover { color: #fff; }
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, .55);
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  padding: 0 16px;
+}
+
+.badge {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  font-size: 12px;
+  color: var(--muted);
+  border: 1px solid #444;
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+.hero h1 {
+  font-size: clamp(42px, 8vw, 82px);
+  margin: 18px 0 6px;
+  font-weight: 800;
+}
+
+.hero p {
+  color: #c9c9c9;
+  margin: 0 auto 18px;
+  max-width: 640px;
+}
+
+.btn {
+  display: inline-block;
+  border: 1px solid #666;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  transition: .2s ease;
+}
+
+.btn:hover {
+  background: #222;
+  border-color: #888;
+}
+
+.features {
+  background: #fff;
+  color: #111;
+}
+
+.grid {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 40px 16px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.card {
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 24px;
+  text-align: center;
+}
+
+.card .icon {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  margin: 6px 0 8px;
+  font-size: 16px;
+  letter-spacing: .02em;
+}
+
+.card p {
+  margin: 0;
+  color: #555;
+  font-size: 14px;
+}
+
+.notify {
+  text-align: center;
+  padding: 40px 16px 56px;
+}
+
+.notify h2 {
+  font-size: clamp(22px, 4vw, 32px);
+  margin: 6px 0 8px;
+}
+
+.notify p {
+  color: #555;
+  margin: 0 0 18px;
+}
+
+.notify-form {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  padding: 6px;
+  background: #fff;
+}
+
+.notify-form input {
+  border: none;
+  outline: none;
+  padding: 10px 14px;
+  min-width: 240px;
+  border-radius: 999px;
+}
+
+.notify-form button {
+  border: none;
+  background: #111;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.footer {
+  text-align: center;
+  padding: 32px 16px 50px;
+  color: var(--muted);
+  background: var(--bg);
+}
+
+.footer .logo {
+  font-size: 20px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.footer .social {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  margin: 8px 0;
+}
+
+.footer .social a {
+  color: #bfbfbf;
+  text-decoration: none;
+}
+
+.footer .social a:hover {
+  color: #fff;
+}
+
+.footer .email {
+  display: inline-block;
+  color: #bfbfbf;
+  margin: 6px 0 10px;
+  text-decoration: none;
+}
+
+.footer .email:hover {
+  color: #fff;
+}

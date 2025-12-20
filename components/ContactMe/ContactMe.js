@@ -12,7 +12,6 @@ async function submitForm(event) {
   }
 
   try {
-    // Improve UX: disable submit button while sending
     const btn = form.querySelector('button[type="submit"]');
     if (btn) {
       btn.disabled = true;
@@ -27,7 +26,6 @@ async function submitForm(event) {
     });
 
     if (!res.ok) {
-      // Try to read JSON error; fall back to text
       let serverMsg = 'Failed to send message';
       try {
         const err = await res.json();
@@ -43,7 +41,6 @@ async function submitForm(event) {
 
     alert('Message sent! I\'ll get back to you soon.');
     form.reset();
-    // Reset textarea height if needed
     const ta = form.querySelector('textarea');
     if (ta) { ta.style.height = 'auto'; }
   } catch (e) {
