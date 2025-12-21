@@ -1,13 +1,4 @@
 {
-  "version": 2,
-  "trailingSlash": false,
-  "builds": [
-    { "src": "index.html", "use": "@vercel/static" },
-    { "src": "style.css", "use": "@vercel/static" },
-    { "src": "public/**", "use": "@vercel/static" },
-    { "src": "components/**", "use": "@vercel/static" },
-    { "src": "api/**/*.js", "use": "@vercel/node" }
-  ],
   "headers": [
     {
       "source": "/public/(.*)\\.(svg|png|jpg|jpeg|gif|webp|ico)",
@@ -31,8 +22,5 @@
   "rewrites": [
     { "source": "/", "destination": "/index.html" },
     { "source": "/contact", "destination": "/components/ContactMe/ContactMe.html" }
-  ],
-  "routes": [
-    { "src": "/api/contact", "dest": "/api/contact.js" }
   ]
 }
