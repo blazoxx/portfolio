@@ -39,8 +39,15 @@ module.exports = async (req, res) => {
     }
 
     const apiKey = process.env.RESEND_API_KEY;
+    const toEmail = process.env.NEWSLETTER_TO || process.env.RESEND_TO_EMAIL;
+
     if (!apiKey) {
       res.status(500).json({ error: 'Email service not configured' });
+      return;
+    }
+
+    if (!toEmail) {
+      res.status(500).json({ error: 'Destination email not configured' });
       return;
     }
 
@@ -60,7 +67,7 @@ module.exports = async (req, res) => {
 
     const payload = {
       from: 'Portfolio Newsletter <onboarding@resend.dev>',
-      to: ['your-email@example.com'], // Replace with your email
+      to: [toEmail],
       subject,
       html,
     };
