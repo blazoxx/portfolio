@@ -1,6 +1,3 @@
-// Serverless function to handle newsletter subscriptions via Resend
-// Requires environment variable: RESEND_API_KEY
-
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
     res.status(405).json({ error: 'Method Not Allowed' });
@@ -8,7 +5,6 @@ module.exports = async (req, res) => {
   }
 
   try {
-    // Ensure we have a parsed JSON body
     const contentType = req.headers['content-type'] || '';
     let body = req.body;
     if (!body && contentType.includes('application/json')) {
@@ -31,7 +27,6 @@ module.exports = async (req, res) => {
       return;
     }
 
-    // Basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       res.status(400).json({ error: 'Invalid email address' });
@@ -51,7 +46,8 @@ module.exports = async (req, res) => {
       return;
     }
 
-    const subject = 'New Newsletter Subscription';
+    const subject = process.env.NEWSLETTER_SUBJECT || 'New Newsletter Subscription';
+    const from = process.env.NEWSLETTER_FROM || 'Portfolio Newsletter <onboarding@resend.dev>';
     const escapeHtml = (str) => String(str).replace(/[&<>"']/g, (c) => ({
       '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
     }[c]));
@@ -60,17 +56,30 @@ module.exports = async (req, res) => {
       <div style="font-family: Arial, sans-serif; line-height: 1.5;">
         <h2>New Newsletter Subscription</h2>
         <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-        <p><strong>Subscribed from:</strong> Coming Soon page</p>
+        <p><strong>Subscribed from:</strong> B-Xtras page</p>
         <p><strong>Date:</strong> ${new Date().toLocaleString()}</p>
       </div>
     `;
-
+    const text = [
+      'New Newsletter Subscription',
+      `Email: ${email}`,
+      'Subscribed from: Coming Soon page',
+      `Date: ${new Date().toLocaleString()}`
+    ].join('\n');
+    const format = (process.env.NEWSLETTER_EMAIL_FORMAT || 'html').toLowerCase();
     const payload = {
-      from: 'Portfolio Newsletter <onboarding@resend.dev>',
+      from,
       to: [toEmail],
-      subject,
-      html,
+      subject
     };
+    if (format === 'text') {
+      payload.text = text;
+    } else if (format === 'both') {
+      payload.html = html;
+      payload.text = text;
+    } else {
+      payload.html = html;
+    }
 
     const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',

@@ -1,6 +1,3 @@
-// Serverless function to send contact form emails via Resend
-// Requires environment variable: RESEND_API_KEY
-
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
     res.status(405).json({ error: 'Method Not Allowed' });
@@ -8,7 +5,6 @@ module.exports = async (req, res) => {
   }
 
   try {
-    // Ensure we have a parsed JSON body
     const contentType = req.headers['content-type'] || '';
     let body = req.body;
     if (!body && contentType.includes('application/json')) {
@@ -37,7 +33,13 @@ module.exports = async (req, res) => {
       return;
     }
 
-    const subject = `New message from ${name}`;
+    const subject = (process.env.CONTACT_SUBJECT
+      ? String(process.env.CONTACT_SUBJECT).replace('{name}', name)
+      : `New message from ${name}`);
+
+    const from = process.env.CONTACT_FROM || 'Portfolio Contact <onboarding@resend.dev>';
+    const toEmail = process.env.CONTACT_TO || process.env.RESEND_TO_EMAIL || 'sinclarcasii@gmail.com';
+
     const html = `
       <div style="font-family: Arial, sans-serif; line-height: 1.5;">
         <h2>New contact form submission</h2>
@@ -48,26 +50,43 @@ module.exports = async (req, res) => {
       </div>
     `;
 
+    const text = [
+      'New contact form submission',
+      `Name: ${name}`,
+      `Email: ${email}`,
+      'Message:',
+      message
+    ].join('\n');
+
+    const format = (process.env.CONTACT_EMAIL_FORMAT || 'html').toLowerCase();
+    const payload = {
+      from,
+      to: [toEmail],
+      subject,
+      reply_to: email,
+    };
+    if (format === 'text') {
+      payload.text = text;
+    } else if (format === 'both') {
+      payload.html = html;
+      payload.text = text;
+    } else {
+      payload.html = html;
+    }
+
     const resp = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        from: 'Portfolio Contact <onboarding@resend.dev>',
-        to: ['sinclarcasii@gmail.com'],
-        subject,
-        html,
-        reply_to: email,
-      }),
+      body: JSON.stringify(payload),
     });
 
     if (!resp.ok) {
       let errMsg = 'Email service error';
       try {
         const data = await resp.json();
-        // Resend typically returns { error: { message: '...', name: '...', statusCode: ... } }
         errMsg = data?.error?.message || data?.message || errMsg;
       } catch (_) {
         const errTxt = await resp.text().catch(() => '');

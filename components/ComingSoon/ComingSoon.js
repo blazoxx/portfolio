@@ -1,4 +1,3 @@
-// Newsletter subscription handler
 async function submitNewsletter(event) {
   event.preventDefault();
   
@@ -21,7 +20,6 @@ async function submitNewsletter(event) {
     return;
   }
 
-  // Disable button and show loading state
   const originalButtonText = button.textContent;
   button.disabled = true;
   button.textContent = 'Subscribing...';
@@ -39,10 +37,9 @@ async function submitNewsletter(event) {
     const data = await response.json();
 
     if (response.ok) {
-      alert('Thanks! We\'ll notify you soon.');
+      alert('Thanks for subscribing! We\'ll notify you soon.😊');
       statusEl.style.color = '#2f855a';
-      statusEl.textContent = 'Subscribed! If confirmations are enabled, check your inbox or spam.';
-      emailInput.value = ''; // Clear the input
+      emailInput.value = '';
     } else {
       const msg = data.error || 'Something went wrong. Please try again.';
       alert(msg);
@@ -55,7 +52,6 @@ async function submitNewsletter(event) {
     statusEl.style.color = '#c53030';
     statusEl.textContent = 'Network error. Please try again.';
   } finally {
-    // Re-enable button
     button.disabled = false;
     button.textContent = originalButtonText;
   }
