@@ -1,26 +1,5 @@
 {
-  "headers": [
-    {
-      "source": "/public/(.*)\\.(svg|png|jpg|jpeg|gif|webp|ico)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    },
-    {
-      "source": "/public/assets/resume/(.*)\\.(pdf)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
-      ]
-    },
-    {
-      "source": "/components/(.*)\\.(js)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=60" }
-      ]
-    }
-  ],
   "rewrites": [
-    { "source": "/", "destination": "/index.html" },
     { "source": "/contact", "destination": "/components/ContactMe/ContactMe.html" }
   ]
 }
