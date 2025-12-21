@@ -1,8 +1,10 @@
 {
+  "buildCommand": "echo 'No build needed'",
+  "outputDirectory": ".",
+  "public": true,
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/contact", "destination": "/components/ContactMe/ContactMe.html" },
     { "source": "/coming-soon", "destination": "/components/ComingSoon/ComingSoon.html" },
-    { "source": "^(?!/api).*", "destination": "/index.html" }
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
