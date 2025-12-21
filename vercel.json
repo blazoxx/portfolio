@@ -1,10 +1,6 @@
 {
-  "buildCommand": "echo 'No build needed'",
-  "outputDirectory": ".",
-  "public": true,
   "rewrites": [
     { "source": "/contact", "destination": "/components/ContactMe/ContactMe.html" },
-    { "source": "/coming-soon", "destination": "/components/ComingSoon/ComingSoon.html" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/coming-soon", "destination": "/components/ComingSoon/ComingSoon.html" }
   ]
 }
