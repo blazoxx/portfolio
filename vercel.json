@@ -4,7 +4,7 @@
   "public": true,
   "rewrites": [
     { "source": "/contact", "destination": "/components/ContactMe/ContactMe.html" },
-    { "source": "/coming-soon", "destination": "/components/ComingSoon/ComingSoon.html" },
+    { "source": "/b-xtras", "destination": "/components/ComingSoon/ComingSoon.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
