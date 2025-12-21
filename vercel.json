@@ -1,6 +1,1 @@
-{
-  "rewrites": [
-    { "source": "/contact", "destination": "/components/ContactMe/ContactMe.html" },
-    { "source": "/coming-soon", "destination": "/components/ComingSoon/ComingSoon.html" }
-  ]
-}
+{}
