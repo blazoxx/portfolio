@@ -1,5 +1,5 @@
 {
-  "rewrites": [
-    { "source": "/contact", "destination": "/components/ContactMe/ContactMe.html" }
-  ]
+  "buildCommand": "echo 'No build needed'",
+  "outputDirectory": ".",
+  "public": true
 }
