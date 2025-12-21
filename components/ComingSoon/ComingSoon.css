@@ -20,9 +20,13 @@ body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
 }
 
+body::-webkit-scrollbar{
+  display: none;
+}
+
 .hero {
   position: relative;
-  height: 60vh;
+  height: 100vh;
   min-height: 420px;
   display: grid;
   place-items: center;
@@ -198,4 +202,11 @@ body {
 
 .footer .email:hover {
   color: #fff;
+}
+
+
+@media (max-width: 480px) {
+  .notify-form input {
+    min-width: 200px;
+  }
 }
