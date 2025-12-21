@@ -40,6 +40,7 @@ module.exports = async (req, res) => {
     const from = process.env.CONTACT_FROM || 'Portfolio Contact <onboarding@resend.dev>';
     const toEmail = process.env.CONTACT_TO || process.env.RESEND_TO_EMAIL || 'sinclarcasii@gmail.com';
 
+    const nowIST = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
     const html = `
       <div style="font-family: Arial, sans-serif; line-height: 1.5;">
         <h2>New contact form submission</h2>
@@ -47,6 +48,7 @@ module.exports = async (req, res) => {
         <p><strong>Email:</strong> ${escapeHtml(email)}</p>
         <p><strong>Message:</strong></p>
         <pre style="white-space: pre-wrap;">${escapeHtml(message)}</pre>
+        <p><strong>Date (IST):</strong> ${nowIST}</p>
       </div>
     `;
 
@@ -55,7 +57,8 @@ module.exports = async (req, res) => {
       `Name: ${name}`,
       `Email: ${email}`,
       'Message:',
-      message
+      message,
+      `Date (IST): ${nowIST}`
     ].join('\n');
 
     const format = (process.env.CONTACT_EMAIL_FORMAT || 'html').toLowerCase();

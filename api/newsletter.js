@@ -52,19 +52,20 @@ module.exports = async (req, res) => {
       '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
     }[c]));
 
+    const nowIST = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
     const html = `
       <div style="font-family: Arial, sans-serif; line-height: 1.5;">
         <h2>New Newsletter Subscription</h2>
         <p><strong>Email:</strong> ${escapeHtml(email)}</p>
         <p><strong>Subscribed from:</strong> B-Xtras page</p>
-        <p><strong>Date:</strong> ${new Date().toLocaleString()}</p>
+        <p><strong>Date (IST):</strong> ${nowIST}</p>
       </div>
     `;
     const text = [
       'New Newsletter Subscription',
       `Email: ${email}`,
       'Subscribed from: Coming Soon page',
-      `Date: ${new Date().toLocaleString()}`
+      `Date (IST): ${nowIST}`
     ].join('\n');
     const format = (process.env.NEWSLETTER_EMAIL_FORMAT || 'html').toLowerCase();
     const payload = {
