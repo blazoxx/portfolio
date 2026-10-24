@@ -1,7 +1,6 @@
 {
   "buildCommand": "echo 'No build needed'",
   "outputDirectory": ".",
-  "public": true,
   "rewrites": [
     { "source": "/contact", "destination": "/components/ContactMe/ContactMe.html" },
     { "source": "/b-xtras", "destination": "/components/ComingSoon/ComingSoon.html" },
